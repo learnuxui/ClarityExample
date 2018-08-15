@@ -1,0 +1,65 @@
+<clr-datagrid [(clrDgSingleSelected)]="selectedVM" [clDgRowSelection]="true">
+    
+    <clr-dg-column [clrDgField]="'name'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            Name
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'CPU'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            CPU
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'state'"><ng-container *clrDgHideableColumn="{hidden: false}">
+        State
+    </ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'datastore'"><ng-container *clrDgHideableColumn="{hidden: false}">
+        Datastore
+    </ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'HDD'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            Storage
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'freeHDD'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            Available Space
+        </ng-container></clr-dg-column>
+
+    
+        <clr-dg-action-bar>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
+                    New VM</button>
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete(selectedVM)" *ngIf="selectedVM"><clr-icon shape="close"></clr-icon> Delete</button>
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit(selectedVM)" *ngIf="selectedVM"><clr-icon shape="pencil"></clr-icon> Edit</button>
+            </div>
+        </clr-dg-action-bar>
+  <clr-dg-row *clrDgItems="let vm of vms" [clrDgItem]="vm">
+      <clr-dg-action-overflow>
+          <button class="action-item" (click)="onEdit(vm)">Edit</button>
+          <button class="action-item" (click)="onDelete(vm)">Delete</button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell>{{vm.name}}</clr-dg-cell>
+      <clr-dg-cell>{{vm.CPU}}</clr-dg-cell>
+      <clr-dg-cell>
+         {{vm.state}} &nbsp; &nbsp;<span [class]="getStyle(vm, 'STATE')"></span>
+      </clr-dg-cell>
+      <clr-dg-cell>{{vm.datastore}}</clr-dg-cell>
+      <clr-dg-cell>{{ getValue(vm) }} </clr-dg-cell>
+      <clr-dg-cell>
+          <div class="progress-static success">
+              <progress [max]="vm.HDD" [value]="vm.freeHDD" data-displayval="0%" [style.background-color]="red"></progress>
+          </div>
+        </clr-dg-cell>
+  </clr-dg-row>
+  
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
+
+Selected Virualmachine: <span *ngIf="selectedVM">{{selectedVM.name}}</span>

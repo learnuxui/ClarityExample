@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+.vm-on {
+    display: inline-block;
+    vertical-align: text-bottom;
+    height: 14px;
+    width: 14px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: darkgreen;
+}
+.vm-off {
+    display: inline-block;
+    vertical-align: text-bottom;
+    height: 14px;
+    width: 14px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: darkred;
+}
