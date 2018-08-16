@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ClrDatagridStringFilterInterface} from "@clr/angular";
 import { VirtualMachine } from '../virtual-machine';
+import { ClrWizard } from '../../../node_modules/@clr/angular';
 
 class VMNameFilter implements ClrDatagridStringFilterInterface<VirtualMachine> {
     accepts(virtualmachine: VirtualMachine, search: string):boolean {
@@ -17,6 +18,8 @@ class VMNameFilter implements ClrDatagridStringFilterInterface<VirtualMachine> {
 })
 export class ComponentDgGridComponent implements OnInit {
   vms:VirtualMachine[];
+  _open: boolean = false;
+  selected:VirtualMachine;
   private vmNameFilter = new VMNameFilter();
   selectedVM:VirtualMachine = null;
   constructor() { 
@@ -27,11 +30,12 @@ export class ComponentDgGridComponent implements OnInit {
   }
 
   onEdit(vm:VirtualMachine) {
-    alert("EDIT Virtualmachine" + vm.id + " " + vm.name);
+    this.selected = vm;
+    this._open = !this._open;
   }
   
   onAdd(vms:VirtualMachine[]) {
-     alert("Adding Virtualmachine to resource pool");
+    // this._open = !this._open;
   }
 
   onDelete(vm:VirtualMachine) {

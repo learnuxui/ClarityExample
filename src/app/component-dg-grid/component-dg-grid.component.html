@@ -43,7 +43,7 @@
       <clr-dg-cell>{{vm.name}}</clr-dg-cell>
       <clr-dg-cell>{{vm.CPU}}</clr-dg-cell>
       <clr-dg-cell>
-         {{vm.state}} &nbsp; &nbsp;<span [class]="getStyle(vm, 'STATE')"></span>
+          <span [class]="getStyle(vm, 'STATE')"></span>&nbsp; &nbsp;{{vm.state}}
       </clr-dg-cell>
       <clr-dg-cell>{{vm.datastore}}</clr-dg-cell>
       <clr-dg-cell>{{ getValue(vm) }} </clr-dg-cell>
@@ -61,5 +61,6 @@
     </clr-dg-pagination>
 </clr-dg-footer>
 </clr-datagrid>
-
-Selected Virualmachine: <span *ngIf="selectedVM">{{selectedVM.name}}</span>
+<div  *ngIf="selectedVM">
+    <app-wizard-component [openWizard]="_open" [vm]="selectedVM"></app-wizard-component>
+</div>

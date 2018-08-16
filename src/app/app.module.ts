@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentDgGridComponent } from './component-dg-grid/component-dg-grid.component';
+import { WizardComponentComponent } from './wizard-component/wizard-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentDgGridComponent
+    ComponentDgGridComponent,
+    WizardComponentComponent
   ],
   imports: [
     BrowserModule,

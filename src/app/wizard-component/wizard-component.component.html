@@ -1,0 +1,44 @@
+
+<clr-wizard #wizardlg [(clrWizardOpen)]="openWizard" clrWizardSize="lg">
+  <clr-wizard-title>Large-Sized Wizard</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+  <clr-wizard-page>
+      <ng-template clrPageTitle>Edit-Details</ng-template>
+      <form class="compact">
+        
+        <section class="form-block">
+            <div class="form-group">
+                <label>Virtual Machine Name:</label>
+                <span>{{ this.vm.name }}</span>
+            </div>
+            <div class="form-group">
+                <label>CPU:</label>
+                <span>{{ this.vm.CPU }}</span>
+            </div>
+            <div class="form-group">
+                <label>Snapshot Policy:</label>
+                <span>{{ this.vm.snapshotSchedule }}</span>
+            </div>
+            <div class="form-group">
+              <label>RAM:</label>
+              <span>{{ this.vm.mem }}</span>
+          </div>
+          <div class="form-group">
+            <label>Datastore:</label>
+            <span>{{ this.vm.datastore }}</span>
+        </div>
+        <div class="form-group">
+          <label>Power:</label>
+          <span>Powered {{ this.vm.state }}</span>
+      </div>
+        </section>
+    </form>
+  </clr-wizard-page>
+
+  
+</clr-wizard>
