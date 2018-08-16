@@ -1,3 +1,4 @@
+<div class="main">
 <clr-datagrid [(clrDgSingleSelected)]="selectedVM" [clDgRowSelection]="true">
     
     <clr-dg-column [clrDgField]="'name'">
@@ -63,4 +64,5 @@
 </clr-datagrid>
 <div  *ngIf="selectedVM">
     <app-wizard-component [openWizard]="_open" [vm]="selectedVM"></app-wizard-component>
+</div>
 </div>

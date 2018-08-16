@@ -23,7 +23,7 @@ export class ComponentDgGridComponent implements OnInit {
   private vmNameFilter = new VMNameFilter();
   selectedVM:VirtualMachine = null;
   constructor() { 
-    this.vms = this.getUserList();
+    this.vms = this.getVMList();
   }
 
   ngOnInit() {
@@ -55,7 +55,7 @@ export class ComponentDgGridComponent implements OnInit {
     return Math.round(vm.HDD/1024/1024/1024) + '-TB';
   }
 
-  getUserList() {
+  getVMList() {
     // DUMMY DATA FOR GRID
     const data = [
       { id:1, name:'VM-1', datastore:'ds-1', CPU:'2 GHz', mem: '32 GB', state: 'ON', dataprotection: 'on', snapshotSchedule: 'Hourly', HDD: '2000000000', freeHDD: '1000000000' },
